@@ -13,10 +13,7 @@ router.get('/', function (req, res) {
 router.post('/', function (req, res) {
     if (!req.body.title) {
         res.status(400).send('empty title');
-    } else  if (!req.body.content) {
-        res.status(400).send('no content');
-    }
-    else {
+    } else {
         req.app.locals.collection.insertOne(
             {
                 title: req.body.title,
