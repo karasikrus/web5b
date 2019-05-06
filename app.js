@@ -7,6 +7,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var MongoClient = require('mongodb').MongoClient;
+var documentsRouter = require('./routes/documents');
 
 var app = express();
 
@@ -26,5 +27,5 @@ MongoClient.connect(process.env.MONGODB_URI, { useNewUrlParser: true }, function
     }
     app.locals.collection = db.db().collection("documents");
 });
-
+app.use('/documents', documentsRouter);
 module.exports = app;
